@@ -1,0 +1,6 @@
+name: Deploy to Railway
+
+on:
+  push:
+    branches:
+      - main  # o la rama que uses (master, prod, etc.)
