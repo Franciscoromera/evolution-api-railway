@@ -3,8 +3,7 @@ name: Deploy to Railway
 on:
   push:
     branches:
-      - main  # o la rama que uses (master, prod, etc.)
-
+      - main
 
 jobs:
   deploy:
@@ -14,9 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
+      - name: Install Railway CLI
+        run: npm i -g @railway/cli
+      
       - name: Deploy to Railway
         run: railway up --service=${{ secrets.RAILWAY_SERVICE_ID }}
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
           RAILWAY_PROJECT_ID: c5936490-c082-4f48-8e3f-b8d97ce9b64b
-        
